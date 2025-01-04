@@ -268,6 +268,7 @@ public class GameGrid : MonoBehaviour
 
     public bool IsAdjacent(GamePiece piece1, GamePiece piece2)
     {
+        Debug.Log("piece1.X = " + piece1.X + "; piece1.Y = " + piece1.Y + "; piece2.X = " + piece2.X + "; piece2.Y = " + piece2.Y);
         return (piece1.X == piece2.X && (int)Mathf.Abs(piece1.Y - piece2.Y) == 1) || (piece1.Y == piece2.Y && (int)Mathf.Abs(piece1.X - piece2.X) == 1);
     }
 
