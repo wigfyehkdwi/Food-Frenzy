@@ -10,8 +10,12 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI remainingSubtext;
     public TextMeshProUGUI targetText;
     public TextMeshProUGUI targetSubtext;
+    public TextMeshProUGUI scoreText;
 
     public Image[] stars;
+
+    private int starIndex;
+    private bool isGameOver;
 
     private void Start()
     {
@@ -24,5 +28,60 @@ public class HUD : MonoBehaviour
         {
             stars[i].enabled = i == starIndex;
         }
+    }
+
+    public void SetScore(int score)
+    {
+
+        scoreText.text = score.ToString();
+
+        if (score >= level.score3Star) starIndex = 3;
+        else if (score >= level.score2Star) starIndex = 2;
+        else if (score >= level.score1Star) starIndex = 1;
+
+        UpdateStars();
+    }
+
+    public void SetTarget(int target)
+    {
+        targetText.text = target.ToString();
+    }
+
+    public void SetRemaining(int remaining)
+    {
+        remainingText.text = remaining.ToString();
+    }
+
+    public void SetRemaining(string remaining)
+    {
+        remainingText.text = remaining;
+    }
+
+    public void SetLevelType(Level.LevelType type)
+    {
+        switch (type)
+        {
+            case Level.LevelType.MOVES:
+                remainingSubtext.text = "moves remaining";
+                targetSubtext.text = "target score";
+                break;
+            case Level.LevelType.OBSTACLE:
+                remainingSubtext.text = "moves remaining";
+                targetSubtext.text = "dishes remaining";
+                break;
+            case Level.LevelType.TIMER:
+                remainingSubtext.text = "time remaining";
+                targetSubtext.text = "target score";
+                break;
+        }
+    }
+
+    public void OnGameWin(int score)
+    {
+        isGameOver = true;
+    }
+    public void OnGameLose()
+    {
+        isGameOver = true;
     }
 }
