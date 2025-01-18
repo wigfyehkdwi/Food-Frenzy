@@ -29,16 +29,9 @@ public class Level : MonoBehaviour
 
     protected bool didWin;
 
-    // Start is called before the first frame update
     private void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        hud.SetScore(currentScore);
     }
 
     public virtual void GameWin()
@@ -64,14 +57,15 @@ public class Level : MonoBehaviour
     {
         //Update Score
         currentScore += piece.score;
+
+        hud.SetScore(currentScore);
     }
 
     protected virtual IEnumerator WaitForGridFill()
     {
-        while (grid.IsFilling)
-        {
-            yield return 0;
-        }
+        while (grid.IsFilling) yield return 0;
 
+        if (didWin && !grid.IsFilling) hud.OnGameWin(currentScore);
+        else hud.OnGameLose();
     }
 }

@@ -10,6 +10,10 @@
     {
         type = LevelType.MOVES;
 
+        hud.SetLevelType(type);
+        hud.SetScore(currentScore);
+        hud.SetTarget(targetScore);
+        hud.SetRemaining(numMoves);
     }
 
     public override void OnMove()
@@ -17,6 +21,8 @@
         base.OnMove();
 
         movesUsed++;
+
+        hud.SetRemaining(numMoves - movesUsed);
 
         if(numMoves - movesUsed == 0)
         {

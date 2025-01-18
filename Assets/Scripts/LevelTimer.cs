@@ -13,6 +13,10 @@ public class LevelTimer : Level
     {
         type = LevelType.TIMER;
 
+        hud.SetLevelType(type);
+        hud.SetScore(currentScore);
+        hud.SetTarget(targetScore);
+        hud.SetRemaining(string.Format("{0}:{1:00}", timeInSeconds / 60, timeInSeconds % 60));
     }
 
     // Update is called once per frame
@@ -21,6 +25,8 @@ public class LevelTimer : Level
         if (!timeOut)
         {
             timer += Time.deltaTime;
+
+            hud.SetRemaining(string.Format("{0}:{1:00}", Mathf.Max(timeInSeconds - timer, 0) / 60, Mathf.Max(timeInSeconds - timer, 0) % 60));
 
             if (timeInSeconds - timer <= 0)
             {
