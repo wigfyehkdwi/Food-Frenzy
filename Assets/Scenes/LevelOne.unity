@@ -141,6 +141,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1473450685386733360, guid: 0cdc68268aabb4c468837f5280d3d10e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8599ad1b40095fe47a3166b3382305d6, type: 2}
     - target: {fileID: 3789794172752741642, guid: 0cdc68268aabb4c468837f5280d3d10e, type: 3}
       propertyPath: m_Name
       value: Game UI Canvas

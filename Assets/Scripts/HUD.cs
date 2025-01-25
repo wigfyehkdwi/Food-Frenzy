@@ -78,10 +78,12 @@ public class HUD : MonoBehaviour
 
     public void OnGameWin(int score)
     {
-        isGameOver = true;
+        GetComponent<Canvas>().sortingOrder = 3;
+        GameOver.instance.ShowWin(score, starIndex);
     }
     public void OnGameLose()
     {
-        isGameOver = true;
+        GetComponent<Canvas>().sortingOrder = 3;
+        isGameOver.instance.ShowLose();
     }
 }
