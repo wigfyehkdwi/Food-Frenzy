@@ -6,59 +6,60 @@ using TMPro;
 
 public class GameOver : MonoBehaviour
 {
-    public Image starsImage;
-    public TMP_Text scoreText;
-    public TMP_Text loseText;
-
-    public Button replayButton;
-    public Button doneButton;
+    public GameObject screenParent;
+    public GameObject scoreParent;
+    public TextMeshProUGUI loseText;
+    public TextMeshProUGUI scoreText;
+    public Image[] stars;
+    private Animator animator;
 
     public static GameOver instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (instance) return;
-        instance = this;
-        gameObject.SetActive(false);
-        starsImage.enabled = false;
-        scoreText.enabled = false;
-        loseText.enabled = false;
-        replayButton.GameObject.SetActive(false);
-        doneButton.gameObject.SetActive(false);
-        replayButton.onClick.AddListener(OnReplayClicked);
-        replayButton.onClick.AddListener(OnDoneClicked);
+        screenParent.SetActive(false);
+
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].enabled = true;
+        }
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     public void ShowLose()
     {
-        gameObject.SetActive(true);
-        replayButton.gameObject.SetActive(true);
-        doneButton.gameObject.SetActive(true);
+        screenParent.SetActive(true);
+        scoreParent.SetActive(false);
         loseText.enabled = true;
+
+        if (animator) animator.Play("GameOverDisplay");
     }
 
     public void ShowWin(int score, int starCount)
     {
-        gameObject.SetActive(true);
-        starsImage.enabled = true;
+        screenParent.SetActive(true);
+        scoreParent.SetActive(true);
+        loseText.enabled = false;
         scoreText.text = score.ToString();
+        scoreText.enabled = false;
+        if (animator) animator.Play("GameOverShow");
 
         StartCoroutine(ShowWinCoroutine(starCount));
     }
 
     private IEnumerator ShowWinCoroutine(int starCount)
     {
-        for (int i = 0; i <= starCount; i++)
+        for (int i = 0; i < stars.Length; i++)
         {
             yield return new WaitForSeconds(0.5f);
-            starsImage.sprite = HUD.instance.stars[i];
+            stars[i].enabled = true;
+            if (i > 0) stars[i - 1].enabled = false;
         }
 
         scoreText.enabled = true;
-        replayButton.gameObject.SetActive(true);
-        doneButton.gameObject.SetActive(true);
     }
 
     public void OnReplayClicked()
@@ -67,6 +68,6 @@ public class GameOver : MonoBehaviour
     }
 
     public void OnDoneClicked()
-    { 
+    {
     }
 }

@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}
+  gameOver: {fileID: 5120461368793406729}
   remainingText: {fileID: 3789794173083254123}
   remainingSubtext: {fileID: 3789794173261474117}
   targetText: {fileID: 3789794172796920588}
@@ -2074,7 +2075,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2537800422076281014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5120461368793406729}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: OnDoneClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6275012578331545841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,6 +2350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6892931414583025772}
   - component: {fileID: 1473450685386733360}
+  - component: {fileID: 5120461368793406729}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -2385,6 +2399,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5120461368793406729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041830715129708326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf0894d7aa6b6149b49a83682beb5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenParent: {fileID: 6275012578331545841}
+  scoreParent: {fileID: 9116591060228120395}
+  loseText: {fileID: 1532158031111426346}
+  scoreText: {fileID: 7975978676037781456}
+  stars:
+  - {fileID: 6351127518063979028}
+  - {fileID: 4808838516017041053}
+  - {fileID: 2999405416008195323}
+  - {fileID: 6549032356574105293}
 --- !u!1 &8439636989184583291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,7 +2752,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8882727758188118930}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5120461368793406729}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: OnReplayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9116591060228120395
 GameObject:
   m_ObjectHideFlags: 0

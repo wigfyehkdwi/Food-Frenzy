@@ -5,6 +5,7 @@ using TMPro;
 public class HUD : MonoBehaviour
 {
     public Level level;
+    public GameOver gameOver;
 
     public TextMeshProUGUI remainingText;
     public TextMeshProUGUI remainingSubtext;
@@ -78,12 +79,10 @@ public class HUD : MonoBehaviour
 
     public void OnGameWin(int score)
     {
-        GetComponent<Canvas>().sortingOrder = 3;
-        GameOver.instance.ShowWin(score, starIndex);
+        gameOver.ShowWin(score, starIndex);
     }
     public void OnGameLose()
     {
-        GetComponent<Canvas>().sortingOrder = 3;
-        isGameOver.instance.ShowLose();
+        gameOver.ShowLose();
     }
 }
