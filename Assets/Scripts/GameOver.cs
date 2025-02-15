@@ -45,7 +45,7 @@ public class GameOver : MonoBehaviour
         loseText.enabled = false;
         scoreText.text = score.ToString();
         scoreText.enabled = false;
-        if (animator) animator.Play("GameOverShow");
+        if (animator) animator.Play("GameOverDisplay");
 
         StartCoroutine(ShowWinCoroutine(starCount));
     }
